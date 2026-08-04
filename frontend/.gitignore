@@ -21,6 +21,10 @@ dist-ssr
 # Local Environment Files
 *.local
 
+# Postman
+.postman/
+postman/
+
 # Editor Directories & Files
 .vscode/*
 !.vscode/extensions.json
