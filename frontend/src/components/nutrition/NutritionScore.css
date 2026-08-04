@@ -1,0 +1,41 @@
+.nutrition-score {
+    background: var(--background-color);
+
+    padding: 3rem 2rem;
+
+    border-radius: 1rem;
+
+    text-align: center;
+
+    margin-bottom: 2rem;
+}
+
+.score-number {
+    font-size: 4rem;
+
+    font-weight: 700;
+
+    margin-bottom: 1rem;
+}
+
+.score-badge {
+    display: inline-block;
+
+    color: white;
+
+    padding: .5rem 1rem;
+
+    border-radius: 999px;
+
+    font-size: .9rem;
+
+    font-weight: 600;
+
+    margin-bottom: 1rem;
+}
+
+.score-text {
+    color: var(--text-light);
+
+    font-size: 1rem;
+}

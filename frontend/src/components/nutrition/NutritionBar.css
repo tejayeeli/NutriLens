@@ -1,0 +1,37 @@
+.nutrition-bar {
+  margin-bottom: 1.5rem;
+}
+
+.nutrition-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: .5rem;
+
+  font-weight: 600;
+
+  color: var(--text-color);
+}
+
+.progress-track {
+  width: 100%;
+
+  height: 10px;
+
+  background: var(--border-color);
+
+  border-radius: 999px;
+
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+
+  background: var(--primary-color);
+
+  border-radius: inherit;
+
+  transition: width .4s ease;
+}

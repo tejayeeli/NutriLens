@@ -1,0 +1,101 @@
+.settings-list{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin:0 auto 4rem;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5rem;
+}
+
+/* Card */
+
+.settings-card{
+
+    background:var(--surface-color);
+
+    border:1px solid var(--border-color);
+
+    border-radius:1rem;
+
+    padding:1.75rem;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.settings-card-header{
+
+    margin-bottom:1rem;
+}
+
+.settings-card h3{
+
+    color:var(--text-color);
+
+    font-size:1.3rem;
+}
+
+.settings-description{
+
+    color:var(--text-light);
+
+    line-height:1.6;
+}
+
+/* Theme */
+
+.coming-soon{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    margin-top:1rem;
+
+    padding:.45rem .9rem;
+
+    border-radius:999px;
+
+    background:#FEF3C7;
+
+    color:#92400E;
+
+    font-size:.85rem;
+
+    font-weight:600;
+}
+
+.theme-toggle{
+
+    margin-top:1.5rem;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.theme-toggle input{
+
+    cursor:not-allowed;
+}
+
+@media(max-width:768px){
+
+    .settings-list{
+
+        width:95%;
+    }
+
+    .settings-card{
+
+        padding:1.5rem;
+    }
+
+}

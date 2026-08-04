@@ -1,0 +1,12 @@
+.profile-stats{
+
+    width:min(1100px,90%);
+
+    margin:0 auto 5rem;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:1.5rem;
+}

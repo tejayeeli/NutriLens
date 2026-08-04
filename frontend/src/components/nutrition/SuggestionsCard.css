@@ -1,0 +1,23 @@
+.suggestions-card {
+  padding: 2rem;
+
+  background: var(--background-color);
+
+  border-radius: 1rem;
+}
+
+.suggestions-card h3 {
+  text-align: center;
+
+  margin-bottom: 1.5rem;
+
+  color: var(--text-color);
+}
+
+.suggestions-card p {
+  margin-bottom: .8rem;
+
+  color: var(--text-light);
+
+  font-size: 1rem;
+}

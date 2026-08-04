@@ -1,0 +1,28 @@
+.stat-card{
+
+    background:var(--surface-color);
+
+    border-radius:1rem;
+
+    padding:2rem;
+
+    text-align:center;
+
+    border:1px solid var(--border-color);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.stat-card h2{
+
+    color:var(--primary-color);
+
+    font-size:2.4rem;
+
+    margin-bottom:.75rem;
+}
+
+.stat-card p{
+
+    color:var(--text-light);
+}

@@ -1,0 +1,26 @@
+.nutrition-card {
+  width: 100%;
+  max-width: 700px;
+
+  background: var(--surface-color);
+
+  border-radius: 1rem;
+
+  padding: 2.5rem;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.nutrition-card h2 {
+  text-align: center;
+
+  color: var(--text-color);
+
+  margin-bottom: 2rem;
+
+  font-size: 2rem;
+}
+
+.nutrition-bars {
+  margin: 2rem 0;
+}

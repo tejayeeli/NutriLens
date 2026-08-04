@@ -1,0 +1,24 @@
+.health-insights {
+
+  margin: 2rem 0;
+
+  padding: 2rem;
+
+  background: var(--background-color);
+
+  border-radius: 1rem;
+}
+
+.health-insights h3 {
+
+  margin-bottom: 1rem;
+
+  text-align: center;
+}
+
+.health-insights p {
+
+  margin-bottom: .75rem;
+
+  color: var(--text-light);
+}

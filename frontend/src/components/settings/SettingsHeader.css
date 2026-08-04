@@ -1,0 +1,26 @@
+.settings-header{
+
+    text-align:center;
+
+    padding:3rem 1.5rem 1.5rem;
+}
+
+.settings-header h1{
+
+    font-size:2.6rem;
+
+    color:var(--text-color);
+
+    margin-bottom:.75rem;
+}
+
+.settings-header p{
+
+    color:var(--text-light);
+
+    font-size:1rem;
+
+    max-width:600px;
+
+    margin:auto;
+}

@@ -1,0 +1,51 @@
+.profile-header{
+
+    text-align:center;
+
+    padding:4rem 1.5rem 2rem;
+}
+
+.profile-avatar{
+
+    width:100px;
+
+    height:100px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:var(--primary-color);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:3rem;
+
+    margin-bottom:1.5rem;
+}
+
+.profile-header h1{
+
+    color:var(--text-color);
+
+    font-size:2.7rem;
+
+    margin-bottom:1rem;
+}
+
+.profile-header p{
+
+    color:var(--text-light);
+
+    max-width:600px;
+
+    margin:auto;
+
+    line-height:1.6;
+}
