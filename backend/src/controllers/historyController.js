@@ -25,6 +25,31 @@ async function getHistory(req, res) {
   }
 }
 
+async function getHistoryImage(req, res) {
+  try {
+    const meal = await Meal.findById(req.params.id);
+
+    if (!meal) {
+      return res.status(404).json({
+        success: false,
+        message: "Meal not found.",
+      });
+    }
+
+    res.set("Content-Type", meal.imageMimeType);
+
+    return res.send(meal.image);
+  } catch (error) {
+    console.error("History image error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Unable to retrieve meal image.",
+    });
+  }
+}
+
 module.exports = {
   getHistory,
+  getHistoryImage,
 };
