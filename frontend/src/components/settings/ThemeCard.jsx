@@ -5,7 +5,7 @@ function ThemeCard() {
       <h3>🎨 Theme</h3>
 
       <p className="settings-description">
-        NutriLens currently supports <strong>Light Mode</strong>.
+        Plateora currently supports <strong>Light Mode</strong>.
       </p>
 
       <span className="coming-soon">

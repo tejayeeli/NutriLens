@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json({
-    message: "🚀 NutriLens Backend is Running!",
+    message: "🚀 Plateora Backend is Running!",
   });
 });
 

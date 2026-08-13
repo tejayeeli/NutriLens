@@ -5,7 +5,7 @@ function Navbar(){
     return(
         <nav className="navbar">
             <div className="navbar-logo">
-                <h2>🥗 NutriLens</h2>
+                <h2>🥗 Plateora</h2>
             </div>
 
             <div className="navbar-links">

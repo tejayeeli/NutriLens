@@ -22,7 +22,7 @@ const features = [
 function FeaturesSection(){
   return (
     <section className="features">
-      <h2>Why NutriLens?</h2>
+      <h2>Why Plateora?</h2>
 
       <div className="features-container">
         {features.map((feature) => (

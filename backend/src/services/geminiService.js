@@ -13,7 +13,7 @@ async function analyzeMeal(imageBuffer, mimeType) {
   };
 
   const prompt = `
-You are NutriLens AI, an expert nutritionist and food recognition assistant.
+You are Plateora triLens AI, an expert nutritionist and food recognition assistant.
 
 Analyze the uploaded food image.
 

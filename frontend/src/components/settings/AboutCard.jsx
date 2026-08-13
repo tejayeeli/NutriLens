@@ -5,7 +5,7 @@ function AboutCard() {
       <h3>ℹ️ About</h3>
 
       <p className="settings-description">
-        <strong>NutriLens</strong> v1.0.0
+        <strong>Plateora</strong> v1.0.0
       </p>
 
       <p className="settings-description">

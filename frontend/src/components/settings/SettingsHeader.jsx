@@ -7,7 +7,7 @@ function SettingsHeader() {
       <h1>Settings</h1>
 
       <p>
-        Customize your NutriLens experience.
+        Customize your Plateora experience.
       </p>
 
     </section>

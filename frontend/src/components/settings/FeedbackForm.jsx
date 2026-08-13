@@ -54,7 +54,7 @@ function FeedbackForm() {
       </div>
 
       <p className="settings-description">
-        Help us improve NutriLens by sharing your experience.
+        Help us improve Plateora by sharing your experience.
       </p>
 
       <div className="rating-stars">
