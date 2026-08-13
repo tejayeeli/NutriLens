@@ -13,7 +13,7 @@ async function analyzeMeal(imageBuffer, mimeType) {
   };
 
   const prompt = `
-You are Plateora triLens AI, an expert nutritionist and food recognition assistant.
+You are Plateora AI, an expert nutritionist and food recognition assistant.
 
 Analyze the uploaded food image.
 
@@ -100,47 +100,76 @@ Return exactly this structure:
 }
 `;
 
-  const response = await ai.models.generateContent({
-    model: "gemini-flash-latest",
-    contents: [
-      {
-        role: "user",
-        parts: [
-          { text: prompt }, imagePart,
+  const maxRetries = 3;
+
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-flash-latest",
+        contents: [
+          {
+            role: "user",
+            parts: [
+              { text: prompt },
+              imagePart,
+            ],
+          },
         ],
-      },
-    ],
-  });
+      });
 
-  const cleanedText = response.text
-    .replace(/```json/g, "")
-    .replace(/```/g, "")
-    .trim();
+      const cleanedText = response.text
+        .replace(/```json/g, "")
+        .replace(/```/g, "")
+        .trim();
 
-  let parsed;
+      let parsed;
 
-  try {
-    parsed = JSON.parse(cleanedText);
-  } catch (error) {
-    console.error("Failed to parse Gemini JSON:");
-    console.log(cleanedText);
+      try {
+        parsed = JSON.parse(cleanedText);
+      } catch (error) {
+        console.error("Failed to parse Gemini JSON:");
+        console.log(cleanedText);
 
-    throw new Error("Gemini returned invalid JSON.");
+        throw new Error("Gemini returned invalid JSON.");
+      }
+
+      return {
+        mealName: parsed.mealName ?? "Unknown Meal",
+
+        score: parsed.score ?? 0,
+
+        meal: parsed.meal ?? [],
+
+        nutrients: parsed.nutrients ?? [],
+
+        healthInsights: parsed.healthInsights ?? [],
+
+        suggestions: parsed.suggestions ?? [],
+      };
+
+    } catch (error) {
+      const status = error.status || error.code;
+
+      const isTemporaryError =
+        status === 503 ||
+        error.message?.includes("UNAVAILABLE") ||
+        error.message?.includes("high demand");
+
+      if (!isTemporaryError || attempt === maxRetries) {
+        throw error;
+      }
+
+      const delay = attempt * 2000;
+
+      console.log(
+        `Gemini temporarily unavailable. Retrying in ${delay / 1000}s...`
+      );
+
+      await new Promise((resolve) =>
+        setTimeout(resolve, delay)
+      );
+    }
   }
-
-  return {
-    mealName: parsed.mealName ?? "Unknown Meal",
-
-    score: parsed.score ?? 0,
-
-    meal: parsed.meal ?? [],
-
-    nutrients: parsed.nutrients ?? [],
-
-    healthInsights: parsed.healthInsights ?? [],
-
-    suggestions: parsed.suggestions ?? [],
-  };
 }
 
 module.exports = {

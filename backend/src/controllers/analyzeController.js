@@ -54,7 +54,7 @@ async function analyzeImage(req, res) {
 
     console.log("✅ Meal saved to MongoDB:", meal._id);
 
-    // 3. Return the same response as before
+    // 3. Return analysis
     return res.status(200).json({
       success: true,
       ...nutrition,
@@ -65,6 +65,7 @@ async function analyzeImage(req, res) {
     console.error(error);
     console.error("==================================\n");
 
+    // Gemini quota/rate limit
     if (
       error.status === 429 ||
       error.message?.includes("RESOURCE_EXHAUSTED") ||
@@ -72,10 +73,25 @@ async function analyzeImage(req, res) {
     ) {
       return res.status(429).json({
         success: false,
-        message: "Daily Analysis limit reached. Please try again later.",
+        message:
+          "Daily Analysis limit reached. Please try again later.",
       });
     }
 
+    // Gemini temporarily unavailable
+    if (
+      error.status === 503 ||
+      error.message?.includes("UNAVAILABLE") ||
+      error.message?.includes("high demand")
+    ) {
+      return res.status(503).json({
+        success: false,
+        message:
+          "Plateora's AI service is temporarily busy. Please try again in a few minutes.",
+      });
+    }
+
+    // Invalid image/request
     if (error.status === 400) {
       return res.status(400).json({
         success: false,
@@ -83,9 +99,11 @@ async function analyzeImage(req, res) {
       });
     }
 
+    // Unknown server error
     return res.status(500).json({
       success: false,
-      message: "Something went wrong while analyzing your meal.",
+      message:
+        "Something went wrong while analyzing your meal.",
     });
   }
 }
