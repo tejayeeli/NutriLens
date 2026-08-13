@@ -1,12 +1,22 @@
-.history-list{
+.history-list {
+  width: min(1100px, 90%);
+  margin: 0 auto 5rem;
 
-    width:min(1100px,90%);
+  display: grid;
 
-    margin:0 auto 5rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  );
 
-    display:grid;
+  gap: 1.5rem;
+}
 
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-    gap:1.5rem;
+@media (max-width: 768px) {
+  .history-list {
+    width: 92%;
+    margin-bottom: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }

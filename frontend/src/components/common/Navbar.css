@@ -1,32 +1,110 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    height: 70px;
-    padding: 0 2rem;
+  height: 70px;
+  padding: 0 2rem;
 
-    background-color: var(--surface-color);
-    border-bottom: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+
+  position: relative;
+  z-index: 100;
 }
 
 .navbar-links {
-    display: flex;
-    gap: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .navbar a {
-    text-decoration: none;
-    color: var(--text-color);
+  text-decoration: none;
+  color: var(--text-color);
 
-    transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .navbar a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .navbar a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.mobile-menu-btn {
+  display: none;
+
+  border: none;
+  background: none;
+
+  font-size: 1.7rem;
+  color: var(--text-color);
+
+  cursor: pointer;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    height: 64px;
+    padding: 0 1rem;
+  }
+
+  .navbar-logo h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .navbar-links,
+  .navbar-settings {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .mobile-menu {
+    position: absolute;
+
+    top: 64px;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    padding: 0.75rem 1rem;
+  }
+
+  .mobile-menu a {
+    padding: 0.9rem 0.75rem;
+
+    text-decoration: none;
+    color: var(--text-color);
+
+    border-radius: 0.5rem;
+
+    font-size: 1rem;
+  }
+
+  .mobile-menu a:hover {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+  }
+
+  .mobile-menu a.active {
     color: var(--primary-color);
     font-weight: 600;
+  }
 }

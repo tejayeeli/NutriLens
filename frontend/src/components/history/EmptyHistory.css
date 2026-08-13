@@ -1,18 +1,29 @@
-.empty-history{
-
-    text-align:center;
-
-    padding:5rem 1rem;
+.empty-history {
+  text-align: center;
+  padding: 5rem 1rem;
 }
 
-.empty-history h2{
-
-    color:var(--text-color);
-
-    margin-bottom:1rem;
+.empty-history h2 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
 }
 
-.empty-history p{
+.empty-history p {
+  color: var(--text-light);
+}
 
-    color:var(--text-light);
+@media (max-width: 768px) {
+  .empty-history {
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .empty-history h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .empty-history p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
 }

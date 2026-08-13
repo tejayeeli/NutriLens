@@ -6,6 +6,8 @@ dotenv.config();
 
 const analyzeRoutes = require("./routes/analyzeRoutes");
 const feedbackRoutes = require("./routes/feedbackRoutes");
+const storageRoutes = require("./routes/storageRoutes");
+const historyRoutes = require("./routes/historyRoutes");
 
 const app = express();
 
@@ -20,5 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/analyze", analyzeRoutes);
 app.use("/api/feedback", feedbackRoutes);
+app.use("/api/storage", storageRoutes);
+app.use("/api/history", historyRoutes);
 
 module.exports = app;

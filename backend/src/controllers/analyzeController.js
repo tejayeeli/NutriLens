@@ -1,4 +1,6 @@
 const { analyzeMeal } = require("../services/geminiService");
+const Meal = require("../models/Meal");
+const sharp = require("sharp");
 
 async function analyzeImage(req, res) {
   try {
@@ -9,23 +11,57 @@ async function analyzeImage(req, res) {
       });
     }
 
+    // Compress image before sending to Gemini and MongoDB
+    const compressedImage = await sharp(req.file.buffer)
+      .resize({
+        width: 1200,
+        height: 1200,
+        fit: "inside",
+        withoutEnlargement: true,
+      })
+      .jpeg({
+        quality: 75,
+      })
+      .toBuffer();
+
+    // 1. Analyze image with Gemini
     const nutrition = await analyzeMeal(
-      req.file.buffer,
-      req.file.mimetype
+      compressedImage,
+      "image/jpeg"
     );
 
     console.log("\n========== GEMINI RESPONSE ==========");
     console.log(nutrition);
     console.log("=====================================\n");
 
+    // 2. Save compressed image + analysis to MongoDB
+    const meal = await Meal.create({
+      image: compressedImage,
+      imageMimeType: "image/jpeg",
+      imageSize: compressedImage.length,
+
+      mealName: nutrition.mealName,
+      score: nutrition.score,
+
+      meal: nutrition.meal,
+      nutrients: nutrition.nutrients,
+
+      healthInsights: nutrition.healthInsights,
+      suggestions: nutrition.suggestions,
+
+      trainingConsent: req.body.trainingConsent === "true",
+    });
+
+    console.log("✅ Meal saved to MongoDB:", meal._id);
+
+    // 3. Return the same response as before
     return res.status(200).json({
       success: true,
       ...nutrition,
     });
 
   } catch (error) {
-
-    console.error("\n========== GEMINI ERROR ==========");
+    console.error("\n========== ANALYZE ERROR ==========");
     console.error(error);
     console.error("==================================\n");
 

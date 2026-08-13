@@ -27,6 +27,7 @@ function UploadSection() {
   const [nutritionData, setNutritionData] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [trainingConsent, setTrainingConsent] = useState(false);
 
   const { addMeal } = useContext(MealContext);
 
@@ -61,7 +62,10 @@ function UploadSection() {
         setIsLoading(true);
         setErrorMessage("");
 
-        const data = await analyzeImage(selectedFile);
+        const data = await analyzeImage(
+          selectedFile,
+          trainingConsent
+        );
 
         setNutritionData(data);
 
@@ -127,6 +131,21 @@ function UploadSection() {
           onChange={handleFileChange}
           style={{ display: "none" }}
         />
+
+        <label className="training-consent">
+          <input
+            type="checkbox"
+            checked={trainingConsent}
+            onChange={(event) =>
+              setTrainingConsent(event.target.checked)
+            }
+          />
+
+          <span>
+            Allow Plateora to use this image and its analysis
+            to improve future AI models.
+          </span>
+        </label>
 
         <button
           className="upload-btn"
